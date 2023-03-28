@@ -52,7 +52,7 @@ const dashboard = () =>
 
 
   return (
-    <div>
+    <div className="my-12 mx-12">
         <div>dashboard</div>
         <div>
           {posts.map((post) => {

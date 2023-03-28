@@ -62,24 +62,10 @@ export default function Details() {
     
     
   return (
-    <div>
+    <div className="w-2/3 my-12 mx-12">
       <Message {...routeData}></Message>
       <div className="my-4">
-        <div className="flex">
-          <input
-            onChange={(e) => setMessage(e.target.value)}
-            type="text"
-            value={message}
-            placeholder="Send a message 😀"
-            className="bg-gray-800 w-full p-2 text-white text-sm"
-          />
-          <button
-            onClick={submitMessage}
-            className="bg-cyan-500 text-white py-2 px-4 text-sm"
-          >
-            Submit
-          </button>
-        </div>
+
         <div className="py-6">
           <h2 className="font-bold">Comments</h2>
           {allMessage?.map((message) => (
@@ -96,6 +82,23 @@ export default function Details() {
             </div>
           ))}
         </div>
+        <div className="flex">
+          <input
+            onChange={(e) => setMessage(e.target.value)}
+            type="text"
+            value={message}
+            placeholder="Send a message 😀"
+            className="border-2 border-gray-800 w-full p-2 text-sm"
+          />
+          <button
+            onClick={submitMessage}
+            className="bg-cyan-500 text-white py-2 px-4 text-sm rounded"
+          >
+            Submit
+          </button>
+        </div>
+
+
       </div>
     </div>
   );

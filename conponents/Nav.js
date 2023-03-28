@@ -20,13 +20,12 @@ export default function Nav() {
         {user ? 
           <div className="flex items-center justify-end">
             <Link href="/post">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> 
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"> 
                 Post
               </button>
             </Link>
             
-            <div className="w-2 bg-blue-500 invisible">
-            </div>
+            
 
             <Link href="/dashboard">
               <div className="rounded-full bg-slate-200">

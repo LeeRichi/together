@@ -102,7 +102,7 @@ const post = () =>
           {post.hasOwnProperty("id") ? "Edit your post" : "Create a new post"}
         </h1>
         <div className="py-2">
-          <h3 className="text-lg font-medium py-2">Description</h3>
+          <h3 className="text-lg font-medium py-2">Destination</h3>
           <textarea
             value={post.description}
             onChange={(e) => setPost({ ...post, description: e.target.value })}

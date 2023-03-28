@@ -12,6 +12,9 @@ import { FaRegComments } from 'react-icons/fa'
 export default function Home()
 {
   const [allPosts, setAllPosts] = useState([]);
+  const [selection, setSelection] = useState(null);
+
+  const [count, setCount] = useState(0);
 
   const getPosts = async () => {
     const collectionRef = collection(db, "posts");
@@ -27,6 +30,24 @@ export default function Home()
     getPosts()
   }, [])
   
+
+  const handleSelection = (option) => {
+  if (selection === option) {
+    setSelection(null); // Deselect if already selected
+    if (option === 'in') {
+      setCount(count - 1);
+    }
+  } else {
+    setSelection(option);
+    if (option === 'in') {
+      setCount(count + 1);
+    } else if (option === 'out') {
+      // Do nothing if the previous selection was also "Out"
+    } else {
+      setCount(count - 1);
+    }
+  }
+}
 
   return (
     <>
@@ -53,13 +74,30 @@ export default function Home()
             </div>
 
             <div className="flex justify-end gap-2">
+
+              <div className="text-lg rounded-full font-bold m-4">{count}</div>
               
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded focus:outline-none focus:shadow-outline w-20 flex py-4 gap-2">
+              <button
+                onClick={() => handleSelection('in')} disabled={selection === 'out'}
+                // className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded focus:outline-none focus:shadow-outline w-20 flex py-4 gap-2"
+                className={`${selection === 'in' ?
+                  'bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded focus:outline-none focus:shadow-outline w-20 flex py-4 gap-2'
+                  : 'border-2 border-blue-500 hover:bg-blue-700 text-blue-500 font-bold px-4 rounded focus:outline-none focus:shadow-outline w-20 flex py-4 gap-2'} 
+                `}
+              >
                 <AiOutlineLike className="mt-1.5" />
                 In
               </button>
               
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded focus:outline-none focus:shadow-outline w-20 flex py-4">
+              <button
+                onClick={() => handleSelection('out')} disabled={selection === 'in'}
+                className={`${selection === 'out' ?
+                  "bg-red-500 hover:bg-red-700 text-white font-bold px-3 rounded focus:outline-none focus:shadow-outline w-20 flex py-4"
+                  :
+                  "border-2 border-red-500 hover:bg-red-700 text-red-500 font-bold px-3 rounded focus:outline-none focus:shadow-outline w-20 flex py-4"
+              }`}
+               
+              >
                 <AiOutlineDislike className="mt-1.5 w-20"/>
                 Out
               </button>

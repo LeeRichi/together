@@ -19,8 +19,8 @@ export default function Nav() {
 
         {user ? 
           <div className="flex items-center justify-end">
-            <Link href="/post">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"> 
+            <Link href="/post" className="mr-2">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> 
                 Post
               </button>
             </Link>
